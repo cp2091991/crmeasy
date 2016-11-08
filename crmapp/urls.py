@@ -17,6 +17,7 @@ from django.conf.urls import include, url
 from django.contrib import admin
 from marketing.views import HomePage
 from subscribers import views
+
 from django.conf import settings
 from django.conf.urls.static import static
 admin.autodiscover()

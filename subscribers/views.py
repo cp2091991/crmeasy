@@ -1,8 +1,9 @@
 from django.shortcuts import render
 from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
-from .models import Subscriber
+
 from .forms import SubscriberForm
+from .models import Subscriber
 def search(request):
     if request.method == 'POST':
         form = ContactForm(request.POST)
@@ -14,6 +15,7 @@ def search(request):
         form = SearchForm()
 
     return render(request, 'search.html', {'form': form,})
+
 def subscriber_new(request, template='subscribers/subscriber_new.html'):
     if request.method == 'POST':
         form = SubscriberForm(request.POST)
@@ -25,10 +27,10 @@ def subscriber_new(request, template='subscribers/subscriber_new.html'):
             first_name = form.cleaned_data['first_name']
             last_name = form.cleaned_data['last_name']
             # Create the User record
-            user = User(username=username, email=email,
-                        first_name=first_name, last_name=last_name)
+            # user = User(username=username, email=email,
+            #             first_name=first_name, last_name=last_name)
             # Create the User record
-            user = User(username=username, email=email)
+            user = User(username=username, email=email,first_name=first_name, last_name=last_name)
             user.set_password(password)
             user.save()
             address_one = form.cleaned_data['address_one']
