@@ -21,6 +21,9 @@ from django.conf.urls.static import static
 urlpatterns = [
     # Marketing pages
      url(r'^$', HomePage.as_view(), name="home"),
+     url(r'^signup/$','crmapp.subscribers.views.subscriber_new', name='sub_new'),
+
+
 
     #url(r'^admin/', admin.site.urls),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
