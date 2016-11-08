@@ -1,2 +1,1 @@
-web: python manage.py collectstatic --no-input; gunicorn crmapp.wsgi
-
+web: gunicorn crmapp.wsgi.wsgi --log-file -
