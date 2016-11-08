@@ -14,14 +14,15 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url
-from django.contrib import admin
+# from django.contrib import admin
 from marketing.views import HomePage
+# from subscribers.views import  subscriber_new
 from django.conf import settings
 from django.conf.urls.static import static
 urlpatterns = [
     # Marketing pages
      url(r'^$', HomePage.as_view(), name="home"),
-     url(r'^signup/$','crmapp.subscribers.views.subscriber_new', name='sub_new'),
+     url(r'^signup/$','subscribers.views.subscriber_new', name='sub_new'),
 
 
 
