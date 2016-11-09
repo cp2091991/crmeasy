@@ -27,6 +27,10 @@ urlpatterns = [
      url(r'^$', HomePage.as_view(), name="home"),
      url(r'^signup/$',views.subscriber_new, name='sub_new'),
      url(r'^admin/', include(admin.site.urls)),
+     url(r'^login/$','django.contrib.auth.views.login', {'template_name': 'login.html'}),
+     url(r'^logout/$','django.contrib.auth.views.logout', {'next_page': '/login/'}),
+
+
        # Login/Logout URLs
 
 
