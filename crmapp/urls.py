@@ -19,7 +19,7 @@ from marketing.views import HomePage
 from subscribers import views
 from django.contrib.auth.views import login
 from django.contrib.auth.views import logout
-from accounts.views import AccountList
+from accounts.views import AccountList,account_cru
 from accounts.urls import account_urls
 from django.conf import settings
 from django.conf.urls.static import static
@@ -35,7 +35,7 @@ urlpatterns = [
      url(regex=r'^logout/$', view=logout, kwargs={'next_page': '/'}, name='logout'),
      url(r'^account/list/$',AccountList.as_view(), name='account_list'),
      url(r'^account/(?P<uuid>[\w-]+)/', include(account_urls)),
-     url(r'^account/new/$',views.account_cru, name='account_new'),
+     url(r'^account/new/$',account_cru, name='account_new'),
 
 
 
