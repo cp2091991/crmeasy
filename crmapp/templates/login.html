@@ -5,7 +5,8 @@
     <div id="content-container" class="container p-none">
         <div class="lgn-container col-lg-8">
             <form id="login-form" method="post"
-                  action="{% url 'django.contrib.auth.views.login' %}">
+            action="{% url 'login' %}" method="post" accept-charset="utf-8">
+
                 {% csrf_token %}
                 <table class="table">
                     <tr>

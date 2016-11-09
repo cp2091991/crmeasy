@@ -44,7 +44,7 @@ if ENV_ROLE == 'development':
     CRMEASY_DB_PASS = get_env_variable('CRMEASY_DB_PASS')
 
 ALLOWED_HOSTS = ['*']
-
+APPEND_SLASH = True
 LOGIN_REDIRECT_URL = '/account/list/'
 # Application definition
 
