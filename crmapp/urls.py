@@ -19,6 +19,7 @@ from marketing.views import HomePage
 from subscribers import views
 from django.contrib.auth.views import login
 from django.contrib.auth.views import logout
+from accounts.views import AccountList
 # from django.contrib.auth import views as auth_views
 # from django.contrib.auth.views import login,logout
 from django.conf import settings
@@ -31,10 +32,9 @@ urlpatterns = [
      url(r'^signup/$',views.subscriber_new, name='sub_new'),
      url(r'^admin/', include(admin.site.urls)),
      url(regex=r'^login/$', view=login, kwargs={'template_name': 'login.html'},name='login'),
-
-
-
      url(regex=r'^logout/$', view=logout, kwargs={'next_page': '/'}, name='logout'),
+    url(r'^account/list/$',AccountList.as_view(), name='account_list'),
+
 
 
 
