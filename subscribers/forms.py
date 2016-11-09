@@ -2,6 +2,9 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from .models import Subscriber
 
+class SearchForm(forms.ModelForm):
+    search_query = forms.CharField(max_length=100)
+
 class AddressMixin(forms.ModelForm):
     class Meta:
         model = Subscriber
@@ -13,7 +16,7 @@ class AddressMixin(forms.ModelForm):
             'state': forms.TextInput(attrs={'class':'form-control'}),
         }
 
-class SubscriberForm(AddressMixin, UserCreationForm):
+class SubscriberForm(AddressMixin):
     first_name = forms.CharField(
         required=True, widget=forms.TextInput(attrs={'class':'form-control'})
     )
