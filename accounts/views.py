@@ -1,8 +1,13 @@
 from django.views.generic import ListView
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
-
+from django.http import HttpResponseForbidden
+from django.shortcuts import render
 from .models import Account
+from django.http import HttpResponseRedirect
+from django.core.urlresolvers import reverse
+# from django.views.generic.detail import DetailView
+
 
 class AccountList(ListView):
     model = Account
@@ -23,7 +28,20 @@ class AccountList(ListView):
         else:
             account_list = Account.objects.filter(owner=self.request.user)
         return account_list
-        
+
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
         return super(AccountList, self).dispatch(*args, **kwargs)
+
+@login_required()
+def account_detail(request, uuid):
+
+    account = Account.objects.get(uuid=uuid)
+    if account.owner != request.user:
+            return HttpResponseForbidden()
+
+    variables = {
+        'account': account,
+    }
+
+    return render(request, 'accounts/account_detail.html', variables)
