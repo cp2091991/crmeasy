@@ -16,22 +16,12 @@ class AccountList(ListView):
     context_object_name = 'accounts'
 
     def get_queryset(self):
-        try:
-            a = self.request.GET.get('account',)
-        except KeyError:
-            a = None
-        if a:
-            account_list = Account.objects.filter(
-                name__icontains=a,
-                owner=self.request.user
-            )
-        else:
-            account_list = Account.objects.filter(owner=self.request.user)
+        account_list = Account.objects.filter(owner=self.request.user)
         return account_list
-
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
         return super(AccountList, self).dispatch(*args, **kwargs)
+
 
 @login_required()
 def account_detail(request, uuid):
