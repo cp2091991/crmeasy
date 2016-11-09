@@ -45,7 +45,7 @@ if ENV_ROLE == 'development':
 
 ALLOWED_HOSTS = ['*']
 
-
+LOGIN_REDIRECT_URL = '/account/list/'
 # Application definition
 
 INSTALLED_APPS = [
