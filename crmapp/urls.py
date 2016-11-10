@@ -38,6 +38,9 @@ urlpatterns = [
      url(r'^account/new/$',account_cru, name='account_new'),
      url(r'^account/list/$',AccountList.as_view(), name='account_list'),
      url(r'^account/(?P<uuid>[\w-]+)/', include(account_urls)),
+     url(r'^contact/new/$',views.contact_cru, name='contact_new'),
+
+
      url(r'^contact/(?P<uuid>[\w-]+)/', include(contact_urls)),
 
 
