@@ -8,8 +8,8 @@ from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from .forms import AccountForm
 from communications.models import Communication
-from .forms import CommunicationForm
 # from contacts.models import Contact
+from communications.forms import CommunicationForm
 from .models import Account
 from contacts.models import Contact
 
