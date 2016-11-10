@@ -7,7 +7,7 @@ from django.utils.decorators import method_decorator
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from .forms import AccountForm
-from .models import Communication
+from communications.models import Communication
 # from contacts.models import Contact
 from .models import Account
 from contacts.models import Contact
