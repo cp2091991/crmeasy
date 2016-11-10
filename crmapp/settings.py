@@ -163,7 +163,20 @@ if ENV_ROLE == 'production':
 STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
 PIPELINE_JS_COMPRESSOR = 'pipeline.compressors.jsmin.JSMinCompressor'
 PIPELINE_CSS_COMPRESSOR = 'mvp.plans.CSSMin.CSSCompressor'
-
+PIPELINE = {
+    'PIPELINE_ENABLED': True,
+    'JAVASCRIPT': {
+        'stats': {
+            'source_filenames': (
+              'js/jquery.js',
+              'js/d3.js',
+              'js/collections/*.js',
+              'js/application.js',
+            ),
+            'output_filename': 'js/stats.js',
+        }
+    }
+}
 PIPELINE_CSS = {
     'site_css': {
         'source_filenames': (
