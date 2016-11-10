@@ -26,6 +26,7 @@ from django.conf.urls.static import static
 from accounts.urls import account_urls
 from contacts.urls import contact_urls
 from contacts.views import contact_cru
+from contacts.views import ContactDelete
 admin.autodiscover()
 
 urlpatterns = [
@@ -43,6 +44,9 @@ urlpatterns = [
 
 
      url(r'^contact/(?P<uuid>[\w-]+)/', include(contact_urls)),
+     url(r'^contact/(?P<pk>[\w-]+)/delete/$',ContactDelete.as_view(), name='contact_delete'),
+
+
 
 
 
