@@ -60,6 +60,7 @@ INSTALLED_APPS = [
     'accounts',
     'contacts',
     'communications',
+    'pipeline',
 
 ]
 
@@ -157,3 +158,30 @@ STATICFILES_DIRS = (
 if ENV_ROLE == 'production':
     import dj_database_url
     DATABASES['default'] =  dj_database_url.config()
+# django-pipeline config
+STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
+PIPELINE_JS_COMPRESSOR = 'pipeline.compressors.jsmin.JSMinCompressor'
+PIPELINE_CSS_COMPRESSOR = 'mvp.plans.CSSMin.CSSCompressor'
+PIPELINE_CSS = {
+    'site_css': {
+        'source_filenames': (
+          'css/bootstrap.min.css',
+          'css/app.css',
+        ),
+        'extra_context': {
+            'media': 'screen',
+        },
+        'output_filename': 'css/site.css',
+    },
+}
+
+PIPELINE_JS = {
+    'site_js': {
+        'source_filenames': (
+          'js/jquery.min.js',
+          'js/bootstrap.min.js',
+          'js/app.js',
+        ),
+        'output_filename': 'js/site.js',
+    }
+}

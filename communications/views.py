@@ -6,10 +6,19 @@ from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from .forms import CommunicationForm
 from django.shortcuts import get_object_or_404
-from crmapp.accounts.models import Account
+from accounts.models import Account
 from django.utils.decorators import method_decorator
 from django.views.generic.edit import DeleteView
 from django.http import Http404
+
+@login_required()
+def comm_detail(request, uuid):
+
+    comm = Communication.objects.get(uuid=uuid)
+    if comm.owner != request.user:
+            return HttpResponseForbidden()
+
+    return render(request, 'communications/comm_detail.html', {'comm':comm})
 @login_required()
 def comm_cru(request, uuid=None, account=None):
 
@@ -37,7 +46,7 @@ def comm_cru(request, uuid=None, account=None):
                 )
             else:
                 reverse_url = reverse(
-                    'crmapp.contacts.views.account_detail',
+                    'account_detail',
                     args=(account.uuid,))
                 return HttpResponseRedirect(reverse_url)
         else:
