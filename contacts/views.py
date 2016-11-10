@@ -36,7 +36,7 @@ def contact_cru(request):
             contact.save()
             # return the user to the account detail view
             reverse_url = reverse(
-                'crmapp.accounts.views.account_detail',
+                'account_detail',
                 args=(account.uuid,)
             )
             return HttpResponseRedirect(reverse_url)

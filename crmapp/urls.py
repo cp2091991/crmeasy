@@ -25,6 +25,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from accounts.urls import account_urls
 from contacts.urls import contact_urls
+from contacts.views import contact_cru
 admin.autodiscover()
 
 urlpatterns = [
@@ -38,7 +39,7 @@ urlpatterns = [
      url(r'^account/new/$',account_cru, name='account_new'),
      url(r'^account/list/$',AccountList.as_view(), name='account_list'),
      url(r'^account/(?P<uuid>[\w-]+)/', include(account_urls)),
-     url(r'^contact/new/$',views.contact_cru, name='contact_new'),
+     url(r'^contact/new/$',contact_cru, name='contact_new'),
 
 
      url(r'^contact/(?P<uuid>[\w-]+)/', include(contact_urls)),
