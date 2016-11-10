@@ -1,17 +1,15 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseForbidden
-
 # Create your views here.
 from django.views.generic import ListView
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
-
 from .forms import AccountForm
 # from contacts.models import Contact
-
 from .models import Account
+from contacts.models import Contact
 
 class AccountList(ListView):
     model = Account
@@ -45,10 +43,11 @@ def account_detail(request, uuid):
     if account.owner != request.user:
             return HttpResponseForbidden()
     # contaget_object_or_404cts = Contact.objects.filter(account=account)
+    contacts = Contact.objects.filter(account=account)
 
     variables = {
         'account': account,
-        # 'contacts': contacts,
+        'contacts': contacts,
     }
 
     return render(request, 'accounts/account_detail.html', variables)
