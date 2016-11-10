@@ -7,6 +7,7 @@ from django.utils.decorators import method_decorator
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from .forms import AccountForm
+from .models import Communication
 # from contacts.models import Contact
 from .models import Account
 from contacts.models import Contact
@@ -44,10 +45,13 @@ def account_detail(request, uuid):
             return HttpResponseForbidden()
     # contaget_object_or_404cts = Contact.objects.filter(account=account)
     contacts = Contact.objects.filter(account=account)
+    communications = Communication.objects.filter(
+        account=account).order_by('-created_on')
 
     variables = {
         'account': account,
         'contacts': contacts,
+        'communications': communications,
     }
 
     return render(request, 'accounts/account_detail.html', variables)
