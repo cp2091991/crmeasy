@@ -1,18 +1,3 @@
-"""crmapp URL Configuration
-
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/1.10/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  url(r'^$', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  url(r'^$', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.conf.urls import url, include
-    2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
-"""
 from django.conf.urls import include, url
 from django.contrib import admin
 from marketing.views import HomePage
@@ -27,6 +12,7 @@ from accounts.urls import account_urls
 from contacts.urls import contact_urls
 from contacts.views import contact_cru
 from contacts.views import ContactDelete
+from communications.urls import comm_urls
 admin.autodiscover()
 
 urlpatterns = [
@@ -41,6 +27,7 @@ urlpatterns = [
      url(r'^account/list/$',AccountList.as_view(), name='account_list'),
      url(r'^account/(?P<uuid>[\w-]+)/', include(account_urls)),
      url(r'^contact/new/$',contact_cru, name='contact_new'),
+     url(r'^comm/(?P<uuid>[\w-]+)/', include(comm_urls)),
 
 
      url(r'^contact/(?P<uuid>[\w-]+)/', include(contact_urls)),
