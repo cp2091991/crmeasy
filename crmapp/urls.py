@@ -33,7 +33,7 @@ urlpatterns = [
      url(r'^admin/', include(admin.site.urls)),
      url(regex=r'^login/$', view=login, kwargs={'template_name': 'login.html'},name='login'),
      url(regex=r'^logout/$', view=logout, kwargs={'next_page': '/'}, name='logout'),
-
+     
      url(r'^account/new/$',account_cru, name='account_new'),
      url(r'^account/list/$',AccountList.as_view(), name='account_list'),
      url(r'^account/(?P<uuid>[\w-]+)/', include(account_urls)),
