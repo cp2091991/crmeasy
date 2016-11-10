@@ -1,7 +1,7 @@
-from django.conf.urls import patterns, url
+from django.conf.urls import url
+from . import views
+contact_urls = [
 
-contact_urls = patterns('',
+    url(r'^$', views.contact_detail, name="contact_detail"),
 
-    url(r'^$', 'crmapp.contacts.views.contact_detail', name="contact_detail"),
-
-)
+]
