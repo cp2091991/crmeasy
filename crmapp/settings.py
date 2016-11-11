@@ -45,7 +45,7 @@ if ENV_ROLE == 'development':
 
 ALLOWED_HOSTS = ['*']
 APPEND_SLASH = True
-LOGIN_REDIRECT_URL = '/account/list/'
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -146,6 +146,8 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+LOGIN_REDIRECT_URL = '/account/list/'
 
 
 # Static files (CSS, JavaScript, Images)
