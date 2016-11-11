@@ -161,6 +161,7 @@ if ENV_ROLE == 'production':
     DATABASES['default'] =  dj_database_url.config()
 # django-pipeline config
 STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 PIPELINE_JS_COMPRESSOR = 'pipeline.compressors.jsmin.JSMinCompressor'
 PIPELINE_CSS_COMPRESSOR = 'mvp.plans.CSSMin.CSSCompressor'
 PIPELINE = {
